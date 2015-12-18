@@ -1,0 +1,109 @@
+<html>
+<head> </head>
+<title> </title>
+<script src="scripts/processing.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+
+PImage hi;
+PImage lol;
+
+int showlol;
+int showhi;
+void setup()
+
+{
+	
+	size(1500,1500);
+	frameRate( 30 );
+	
+	
+	
+	
+	if (sessionStorage.transferlol == null)
+	{
+		showlol = 0;
+	}
+	else
+	{
+		showlol = sessionStorage.transferlol;
+	}
+	
+	if (sessionStorage.transferhi == null)
+	{
+		showhi = 0;
+	}
+	else
+	{
+		showhi = sessionStorage.transferhi;
+	}
+	
+	lol = loadImage("images/lol.png");
+	hi = loadImage("images/hi.jpg");
+	
+	
+}
+
+
+void draw()
+{	
+	background(0,250,250);
+	background(0,250,250);
+	
+	if(mousePressed == true && mouseButton == LEFT)
+		{
+			if (mouseX > 10 && mouseX < 210 && 
+				mouseY > 10 && mouseY < 210)
+				{
+					showlol = 1;
+				}
+		
+			if (mouseX > 10 && mouseX < 210 && 
+				mouseY > 220 && mouseY < 420)
+				{
+					showhi = 1;
+				}
+		}
+
+	if(showlol == 1)
+	{
+		image(lol,500,10,200,200);
+	}
+	
+	
+	
+	if(showhi == 1)
+	{
+		image(hi,500,220,200,200);
+	}
+	
+	if (mousePressed == true && mouseX > 10 && mouseY > 430 && mouseX < 230 && mouseY < 630)
+		
+		{ 
+		sessionStorage.transferlol = showlol;
+		sessionStorage.transferhi = showhi;
+		link("lab8a.html");
+		}
+	
+	fill(255,255,255);
+	rect(10,10,200,200);
+	rect(10,220,200,200);
+	rect(10,430,200,200);
+	
+	fill(0,0,0);
+	text("show Lol",80,110);
+	text("Show hi",80,320);
+	text("Lab8a",80,520);
+	
+	
+}
+	
+
+</script>
+<canvas id="mycanvas"></canvas>
+</head>
+
+<body>
+
+</body>
+</html>
+
